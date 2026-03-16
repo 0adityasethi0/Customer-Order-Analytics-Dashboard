@@ -148,6 +148,23 @@ st.dataframe(
     use_container_width=True
 )
 
+
+# ------------------------------------------------
+# DOWNLOAD FILTERED DATA
+# ------------------------------------------------
+
+st.subheader("Download Filtered Data")
+
+csv = filtered_df.to_csv(index=False).encode("utf-8")
+
+st.download_button(
+    label="Download Filtered Data",
+    data=csv,
+    file_name="filtered_customer_orders.csv",
+    mime="text/csv"
+)
+
+
 # ------------------------------------------------
 # TOP SELLING PRODUCTS
 # ------------------------------------------------
@@ -279,17 +296,3 @@ fig = px.pie(freq_df, names="Customer Type", values="Count", hole=0.4)
 
 st.plotly_chart(fig, use_container_width=True)
 
-# ------------------------------------------------
-# DOWNLOAD FILTERED DATA
-# ------------------------------------------------
-
-st.subheader("Download Filtered Data")
-
-csv = filtered_df.to_csv(index=False).encode("utf-8")
-
-st.download_button(
-    label="Download Filtered Data",
-    data=csv,
-    file_name="filtered_customer_orders.csv",
-    mime="text/csv"
-)
