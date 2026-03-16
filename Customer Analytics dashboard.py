@@ -15,7 +15,9 @@ st.title("Customer Order Analytics Dashboard")
 # GOOGLE SHEET LINK
 # ------------------------------------------------
 
-file_url = file_url = "https://docs.google.com/spreadsheets/d/1J2yMFmakUqnF4LCZZtWoXQ-rBRk-JGvuFGxBd5-0iVs/export?format=csv"
+file_url = "https://docs.google.com/spreadsheets/d/1J2yMFmakUqnF4LCZZtWoXQ-rBRk-JGvuFGxBd5-0iVs/export?format=csv&gid=0"
+
+df = pd.read_csv(file_url)
 
 # ------------------------------------------------
 # LOAD DATA
