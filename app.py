@@ -80,6 +80,7 @@ for col in product_columns:
 st.sidebar.header("Filters")
 
 search_customer = st.sidebar.text_input("Search Customer Name")
+search_phone = st.sidebar.text_input("Search Phone Number")
 
 min_date = df["doa"].min()
 max_date = df["doa"].max()
@@ -91,11 +92,19 @@ date_range = st.sidebar.date_input(
 
 filtered_df = df.copy()
 
+# Filter by customer name
 if search_customer:
     filtered_df = filtered_df[
         filtered_df["name"].str.contains(search_customer, case=False, na=False)
     ]
 
+# Filter by phone number
+if search_phone:
+    filtered_df = filtered_df[
+        filtered_df["phone_no"].astype(str).str.contains(search_phone, na=False)
+    ]
+
+# Date filter
 if len(date_range) == 2:
     start_date, end_date = date_range
 
