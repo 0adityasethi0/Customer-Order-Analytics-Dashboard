@@ -253,7 +253,7 @@ fig.update_layout(
 
 st.plotly_chart(fig, use_container_width=True)
 
-
+fig.update_traces(texttemplate='%{y}', textposition='outside')
 
 # ------------------------------------------------
 # MONTHLY SALES TREND
