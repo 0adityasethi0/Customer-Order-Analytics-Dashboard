@@ -224,6 +224,36 @@ fig = px.bar(
 st.plotly_chart(fig, use_container_width=True)
 
 
+# ------------------------------------------------
+# REVENUE BY LOCATION
+# ------------------------------------------------
+
+st.subheader("Revenue by Location")
+
+location_revenue = (
+    filtered_df.groupby("location")["amount"]
+    .sum()
+    .sort_values(ascending=False)
+    .reset_index()
+)
+
+fig = px.bar(
+    location_revenue,
+    x="location",
+    y="amount",
+    color="amount",
+    color_continuous_scale="tealgrn",
+    height=400
+)
+
+fig.update_layout(
+    xaxis_title="Location",
+    yaxis_title="Revenue",
+)
+
+st.plotly_chart(fig, use_container_width=True)
+
+
 
 # ------------------------------------------------
 # MONTHLY SALES TREND
