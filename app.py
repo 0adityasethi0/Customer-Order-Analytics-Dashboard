@@ -130,7 +130,7 @@ col3.metric("Total Revenue", f"₹{filtered_df['amount'].sum():,.0f}")
 today = pd.Timestamp(datetime.today().date())
 
 summary = (
-    filtered_df.groupby(["name", "phone_no"])
+    filtered_df.groupby(["name", "phone_no", "location"])
     .agg(
         first_order_date=("doa", "min"),
         last_order_date=("delivery_date", "max"),
@@ -138,7 +138,6 @@ summary = (
     )
     .reset_index()
 )
-
 summary["days_since_last_order"] = (
     today - summary["last_order_date"]
 ).dt.days
@@ -149,6 +148,7 @@ st.dataframe(
     summary.rename(columns={
         "name": "Customer Name",
         "phone_no": "Phone Number",
+        "location": "Location",
         "first_order_date": "First Order Date",
         "last_order_date": "Last Order Date",
         "total_sales": "Total Sales",
