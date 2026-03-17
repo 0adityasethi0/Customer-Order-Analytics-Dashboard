@@ -223,42 +223,7 @@ fig = px.bar(
 
 st.plotly_chart(fig, use_container_width=True)
 
-# ------------------------------------------------
-# PAYMENT MODE BREAKDOWN
-# ------------------------------------------------
 
-st.subheader("Payment Mode Breakdown")
-
-payment_counts = filtered_df["payment_mode"].value_counts().reset_index()
-payment_counts.columns = ["Payment Mode", "Count"]
-
-fig = px.pie(
-    payment_counts,
-    names="Payment Mode",
-    values="Count",
-    hole=0.4
-)
-
-st.plotly_chart(fig, use_container_width=True)
-
-# ------------------------------------------------
-# DELIVERY STATUS
-# ------------------------------------------------
-
-st.subheader("Delivery Status Tracking")
-
-delivery_counts = filtered_df["delivery_status"].value_counts().reset_index()
-delivery_counts.columns = ["Status", "Count"]
-
-fig = px.bar(
-    delivery_counts,
-    x="Status",
-    y="Count",
-    color="Status",
-    height=400
-)
-
-st.plotly_chart(fig, use_container_width=True)
 
 # ------------------------------------------------
 # MONTHLY SALES TREND
